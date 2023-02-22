@@ -1,0 +1,16 @@
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col">
+          <div class="card h-100">
+              <%= image_tag "https://source.unsplash.com/featured/?restaurant&#{rand(1..5)}", class: "card-img-top" %>
+              <div class="card-body">
+                <h2 class="card-title"><%restaurant.name %></h2>
+                <h4 class="card-text"><%= restaurant.category.split(' ').map(&:titleize).join(' ') %></h4>
+                <p class="card-text"><%= restaurant.address %></p>
+                <p class="card-text"><%= restaurant.phone_number %></p>
+                <%= link_to "See details", restaurant_path(restaurant), class: "btn btn-primary"%>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
